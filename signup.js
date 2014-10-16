@@ -36,7 +36,9 @@ SignUpModule.controller('UsersController', function($scope, UserRestService) {
             return;
         }
 
-        UserRestService.delete(user, function(data, status) {}, function(data, status) {
+        UserRestService.delete(user, function(data, status) {
+            $scope.users.splice(index, 1);
+        }, function(data, status) {
             showAlert('Error trying delete user "' + user.email +'" [Status: ' + status +']');
         });
     }
